@@ -107,7 +107,7 @@ jobs:
         helm repo add ${{ env.containerRegistry }} https://${{ env.containerRegistry }}/helm/v1/repo --username ${{ secrets.ACR_USERNAME }} --password ${{ secrets.ACR_PASSWORD }}
         helm repo update
        env:
-       HELM_EXPERIMENTAL_OCI: 1
+        HELM_EXPERIMENTAL_OCI: 1
 
      - name: Helm Upgrade
        run: |
@@ -116,5 +116,5 @@ jobs:
         helm chart export ${{ env.containerRegistry }}/helm/content-web:v${{ env.tag }} --destination ./upgrade
         helm upgrade web ./upgrade/web
        env:
-       KUBECONFIG: './kubeconfig'
-       HELM_EXPERIMENTAL_OCI: 1
+        KUBECONFIG: './kubeconfig'
+        HELM_EXPERIMENTAL_OCI: 1
